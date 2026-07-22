@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-ink-line;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-ink text-mist font-body antialiased;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-display text-paper;
+  }
+
+  ::selection {
+    @apply bg-gold/30 text-paper;
+  }
+
+  :focus-visible {
+    outline: 2px solid #C8A45D;
+    outline-offset: 3px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  .eyebrow {
+    @apply font-body text-[11px] uppercase tracking-label text-gold/80;
+  }
+
+  .glass-panel {
+    @apply bg-black/[0.025] backdrop-blur-glass border border-black/[0.07] shadow-glass;
+  }
+
+  .btn-gold {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-gold px-7 py-3
+      font-body text-sm font-medium tracking-wide text-paper
+      transition-all duration-300 hover:bg-gold-light hover:shadow-gold-glow
+      active:scale-[0.98];
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-black/15 px-7 py-3
+      font-body text-sm font-medium tracking-wide text-paper
+      transition-all duration-300 hover:border-gold/60 hover:text-gold
+      active:scale-[0.98];
+  }
+}
+
+/* Signature scent-trail line, drawn with stroke-dashoffset and revealed on scroll */
+.scent-trail path {
+  stroke-dasharray: 1200;
+  stroke-dashoffset: 1200;
+}
+
+.scent-trail.in-view path {
+  animation: drift 2.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}

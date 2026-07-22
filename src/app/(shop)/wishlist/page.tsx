@@ -1,0 +1,10 @@
+import type { Metadata } from "next";
+import WishlistPage from "@/components/product/WishlistPage";
+
+export const metadata: Metadata = {
+  title: "Your Wishlist",
+};
+
+export default function Page() {
+  return <WishlistPage />;
+}
